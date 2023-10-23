@@ -1,0 +1,6 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "lonewolf:item/fang_sword_2d"
+  }
+}

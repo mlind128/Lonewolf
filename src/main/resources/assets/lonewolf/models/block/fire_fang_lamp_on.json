@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "lonewolf:block/fire_fang_lamp_on"
+  }
+}

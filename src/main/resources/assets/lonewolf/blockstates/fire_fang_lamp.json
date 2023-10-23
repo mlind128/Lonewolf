@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "lonewolf:block/fire_fang_lamp"
+    },
+    "powered=true": {
+      "model": "lonewolf:block/fire_fang_lamp_on"
+    }
+  }
+}

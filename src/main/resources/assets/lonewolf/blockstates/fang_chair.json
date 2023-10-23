@@ -1,0 +1,23 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "lonewolf:block/fang_chair",
+      "uvlock": true,
+      "y": 270
+    },
+    "facing=north": {
+      "model": "lonewolf:block/fang_chair",
+      "uvlock": true,
+      "y": 180
+    },
+    "facing=south": {
+      "model": "lonewolf:block/fang_chair",
+      "uvlock": true
+    },
+    "facing=west": {
+      "model": "lonewolf:block/fang_chair",
+      "uvlock": true,
+      "y": 90
+    }
+  }
+}

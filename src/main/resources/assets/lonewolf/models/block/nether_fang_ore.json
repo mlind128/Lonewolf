@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "lonewolf:block/nether_fang_ore"
+  }
+}

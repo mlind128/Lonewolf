@@ -1,0 +1,18 @@
+{
+  "parent": "item/handheld",
+  "loader": "forge:separate_transforms",
+  "base": {
+    "parent": "lonewolf:item/fang_sword_3d"
+  },
+  "perspectives": {
+    "gui": {
+      "parent": "lonewolf:item/fang_sword_2d"
+    },
+    "ground": {
+      "parent": "lonewolf:item/fang_sword_2d"
+    },
+    "fixed": {
+      "parent": "lonewolf:item/fang_sword_2d"
+    }
+  }
+}

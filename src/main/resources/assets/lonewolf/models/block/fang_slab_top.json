@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "lonewolf:block/fang_block",
+    "side": "lonewolf:block/fang_slab",
+    "top": "lonewolf:block/fang_block"
+  }
+}

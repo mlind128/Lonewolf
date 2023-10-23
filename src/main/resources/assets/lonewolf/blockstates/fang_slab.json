@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "lonewolf:block/fang_slab"
+    },
+    "type=double": {
+      "model": "lonewolf:block/fang_block"
+    },
+    "type=top": {
+      "model": "lonewolf:block/fang_slab_top"
+    }
+  }
+}

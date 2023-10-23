@@ -1,0 +1,14 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "lonewolf:item/fire_fang"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "lonewolf:used": 1
+      },
+      "model": "lonewolf:item/fire_fang_used"
+    }
+  ]
+}
