@@ -3,6 +3,8 @@ package net.earthlink.mlind128.lonewolf.item;
 import net.earthlink.mlind128.lonewolf.Lonewolf;
 import net.earthlink.mlind128.lonewolf.armor.CustomArmor;
 import net.earthlink.mlind128.lonewolf.block.CustomBlocks;
+import net.earthlink.mlind128.lonewolf.entity.CustomEntities;
+import net.earthlink.mlind128.lonewolf.fluid.CustomFluids;
 import net.earthlink.mlind128.lonewolf.model.Tags;
 import net.earthlink.mlind128.lonewolf.sound.CustomSounds;
 import net.earthlink.mlind128.lonewolf.tier.CustomTiers;
@@ -11,6 +13,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
+import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -85,6 +88,15 @@ public final class CustomItems {
 	public static final RegistryObject<Item> WATER_BOTTLE = ITEM_REGISTER.register("water_bottle",
 			() -> new ItemWaterBottle());
 
+	public static final RegistryObject<Item> ACID_BUCKET = ITEM_REGISTER.register("acid_bucket",
+			() -> new BucketItem(CustomFluids.SOURCE_ACID, new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
+
 	public static final RegistryObject<Item> MUSIC_DISK_TEST = ITEM_REGISTER.register("music_disk_test",
 			() -> new RecordItem(0, () -> CustomSounds.MUSIC_TEST.get(), new Item.Properties().stacksTo(1), 160));
+
+	public static final RegistryObject<Item> BLACK_WOLF_SPAWN_EGG = ITEM_REGISTER.register("black_wolf_spawn_egg",
+			() -> new ForgeSpawnEggItem(CustomEntities.BLACK_WOLF, 0x000000, 0x666666, new Item.Properties()));
+
+	public static final RegistryObject<Item> WEREWOLF_SPAWN_EGG = ITEM_REGISTER.register("werewolf_spawn_egg",
+			() -> new ForgeSpawnEggItem(CustomEntities.WEREWOLF, 0x666666, 0x000000, new Item.Properties()));
 }

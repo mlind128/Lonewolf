@@ -1,0 +1,86 @@
+{
+  "criteria": {
+    "fang_boots": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "lonewolf:fang_boots"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "fang_chestplate": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "lonewolf:fang_chestplate"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "fang_helmet": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "lonewolf:fang_helmet"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "fang_leggings": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "lonewolf:fang_leggings"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "You have obtained fang armor!"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "lonewolf:fang_chestplate",
+      "nbt": "{Damage:0}"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Fang armor detected!"
+    }
+  },
+  "requirements": [
+    [
+      "fang_helmet"
+    ],
+    [
+      "fang_chestplate"
+    ],
+    [
+      "fang_leggings"
+    ],
+    [
+      "fang_boots"
+    ]
+  ],
+  "rewards": {
+    "experience": 100
+  },
+  "sends_telemetry_event": false
+}

@@ -1,12 +1,17 @@
 package net.earthlink.mlind128.lonewolf.block;
 
 import net.earthlink.mlind128.lonewolf.Lonewolf;
+import net.earthlink.mlind128.lonewolf.fluid.CustomFluids;
 import net.earthlink.mlind128.lonewolf.item.CustomItems;
+import net.earthlink.mlind128.lonewolf.world.MapleTreeGrower;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.LiquidBlock;
+import net.minecraft.world.level.block.SaplingBlock;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -69,6 +74,24 @@ public final class CustomBlocks {
 
 	public static final RegistryObject<Block> FANG_CHAIR = registerBlock("fang_chair",
 			() -> new BlockFangChair(Blocks.OAK_FENCE));
+
+	public static final RegistryObject<Block> LIGHTNING = registerBlock("lightning",
+			() -> new BlockLightning(BlockBehaviour.Properties.copy(Blocks.SPAWNER)));
+
+	public static final RegistryObject<LiquidBlock> ACID_BLOCK = BLOCK_REGISTER.register("acid_block",
+			() -> new LiquidBlock(CustomFluids.SOURCE_ACID, BlockBehaviour.Properties.copy(Blocks.WATER)));
+
+	public static final RegistryObject<Block> FIRE_FANG_MACHINE = registerBlock("fire_fang_machine",
+			() -> new BlockFireFangMachine());
+
+	public static final RegistryObject<Block> MAPLE_LEAVES = registerBlock("maple_leaves",
+			() -> new BlockCustomLeaves());
+
+	public static final RegistryObject<Block> MOON_PORTAL = registerBlock("moon_portal",
+			() -> new BlockMoonPortal());
+
+	public static final RegistryObject<Block> MAPLE_SAPLING = registerBlock("maple_sapling",
+			() -> new SaplingBlock(new MapleTreeGrower(), BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING)));
 
 	private static RegistryObject<Block> registerBlock(String name, Supplier<Block> supplier) {
 		RegistryObject<Block> registeredObject = BLOCK_REGISTER.register(name, supplier);

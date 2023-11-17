@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#forge:is_plains",
+  "features": "lonewolf:maple_tree_injected",
+  "step": "vegetal_decoration"
+}

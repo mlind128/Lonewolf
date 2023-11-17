@@ -7,6 +7,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 
@@ -21,7 +22,8 @@ public class CustomCreativeTabs {
 					.icon(() -> new ItemStack(CustomItems.FANG.get()))
 					.displayItems((parameters, output) -> {
 						CustomBlocks.BLOCK_REGISTER.getEntries().forEach((block) -> {
-							output.accept(block.get().asItem());
+							if (!(block.get() instanceof LiquidBlock))
+								output.accept(block.get().asItem());
 						});
 
 						CustomItems.ITEM_REGISTER.getEntries().forEach((Item) -> {

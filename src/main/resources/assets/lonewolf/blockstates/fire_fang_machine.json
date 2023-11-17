@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "lonewolf:block/fire_fang_machine",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "lonewolf:block/fire_fang_machine"
+    },
+    "facing=south": {
+      "model": "lonewolf:block/fire_fang_machine",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "lonewolf:block/fire_fang_machine",
+      "y": 270
+    }
+  }
+}

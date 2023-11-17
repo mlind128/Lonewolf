@@ -1,0 +1,37 @@
+{
+  "criteria": {
+    "obtain_rice": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "lonewolf:rice"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "You have obtained a rice item!"
+    },
+    "frame": "task",
+    "hidden": true,
+    "icon": {
+      "item": "lonewolf:rice"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "rice detected!"
+    }
+  },
+  "requirements": [
+    [
+      "obtain_rice"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

@@ -2,12 +2,15 @@ package net.earthlink.mlind128.lonewolf.listener;
 
 import com.mojang.brigadier.CommandDispatcher;
 import net.earthlink.mlind128.lonewolf.Lonewolf;
+import net.earthlink.mlind128.lonewolf.block.CustomBlocks;
 import net.earthlink.mlind128.lonewolf.command.HomeCommand;
+import net.earthlink.mlind128.lonewolf.entity.CustomVillagers;
 import net.earthlink.mlind128.lonewolf.model.ThirstProvider;
 import net.earthlink.mlind128.lonewolf.model.keys;
 import net.earthlink.mlind128.lonewolf.network.PacketEatWildMeat;
 import net.earthlink.mlind128.lonewolf.network.PacketToClientSyncThirst;
 import net.earthlink.mlind128.lonewolf.network.Packets;
+import net.earthlink.mlind128.lonewolf.trade.AddTrades;
 import net.earthlink.mlind128.lonewolf.util.Common;
 import net.minecraft.client.Minecraft;
 import net.minecraft.commands.CommandSourceStack;
@@ -15,6 +18,8 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.npc.VillagerProfession;
+import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
@@ -22,10 +27,14 @@ import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.event.village.VillagerTradesEvent;
+import net.minecraftforge.event.village.WandererTradesEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.LogicalSide;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 
 public final class ForgeListener {
 
@@ -91,6 +100,13 @@ public final class ForgeListener {
 					Common.tell(event.player, "[Thirst] Subtracted thirst. Remaining: "
 							+ thirst.getThirst() + ".");
 				}
+
+				if (!event.player.isCreative() && event.player.level().getGameTime() % (20) == 0) {
+					ServerPlayer player = (ServerPlayer) event.player;
+
+					if (player.level().getBlockState(player.blockPosition()).getBlock() == CustomBlocks.ACID_BLOCK.get())
+						player.hurt(player.damageSources().lava(), 1);
+				}
 			});
 	}
 
@@ -104,4 +120,30 @@ public final class ForgeListener {
 			});
 		}
 	}
+
+	@SubscribeEvent
+	public void onVillagerTrades(VillagerTradesEvent event) {
+		VillagerProfession profession = event.getType();
+		Map<Integer /*level*/, List<VillagerTrades.ItemListing>> trades = event.getTrades();
+
+		if (profession == CustomVillagers.PROFESSION_DJ.get()) {
+			AddTrades.music(trades.get(1));
+		}
+
+		if (profession == CustomVillagers.PROFESSION_RANCHER.get()) {
+			AddTrades.chicken(trades.get(1));
+			AddTrades.spawner(trades.get(2));
+		}
+	}
+
+	@SubscribeEvent
+	public void onWandererTrades(WandererTradesEvent event) {
+		List<VillagerTrades.ItemListing> genericTrades = event.getGenericTrades();
+		List<VillagerTrades.ItemListing> rareTrades = event.getRareTrades();
+
+		AddTrades.music(genericTrades);
+		AddTrades.spawner(rareTrades);
+	}
+
+
 }

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "front": "lonewolf:block/fire_fang_machine_front",
+    "side": "lonewolf:block/fire_fang_machine_side",
+    "top": "lonewolf:block/fire_fang_machine_top"
+  }
+}

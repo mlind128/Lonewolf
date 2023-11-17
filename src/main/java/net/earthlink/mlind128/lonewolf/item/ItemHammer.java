@@ -1,8 +1,10 @@
 package net.earthlink.mlind128.lonewolf.item;
 
+import net.earthlink.mlind128.lonewolf.particle.CustomParticles;
 import net.earthlink.mlind128.lonewolf.util.Common;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
@@ -33,6 +35,7 @@ public class ItemHammer extends DiggerItem {
 
 		if (!level.isClientSide && entity instanceof ServerPlayer) {
 			ItemStack hand = entity.getMainHandItem();
+			ServerLevel serverLevel = (ServerLevel) level;
 
 			if (minedBlocks.contains(position))
 				return false;
@@ -53,6 +56,24 @@ public class ItemHammer extends DiggerItem {
 				minedBlocks.add(nearbyPos);
 				((ServerPlayer) entity).gameMode.destroyBlock(nearbyPos);
 				minedBlocks.remove(nearbyPos);
+
+				for (int i = 0; i < 5; i++) {
+					double x = nearbyPos.getX() + 0.5;
+					double y = nearbyPos.getY() + (direction == Direction.UP ? -1 : 1);
+					double z = nearbyPos.getZ() + 0.5;
+					int count = 1;
+					double xOffset = Math.cos(i * 15) * 0.15;
+					double yOffset = 0.1;
+					double zOffset = Math.sin(i * 15) * 0.15;
+					double speed = 0.1;
+
+					try {
+						serverLevel.sendParticles(CustomParticles.HAMMER.get(),
+								x, y, z, count, xOffset, yOffset, zOffset, speed);
+					} catch (Throwable t) {
+						t.printStackTrace();
+					}
+				}
 			}
 
 			if (level.random.nextInt(10) == 0) {
